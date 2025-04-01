@@ -1,0 +1,9 @@
+# Bytecode cache
+__pycache__/
+*.pyc
+
+# Local database
+*.duckdb
+
+# DLT pipeline state
+.dlt/
