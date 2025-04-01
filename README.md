@@ -42,17 +42,17 @@ conda activate dlt_project
 ### 1. **Sitemap Processing**
 The `fetch_sitemaps.py` file contains a function `fetch_sitemaps` which fetches the sitemap XML files containing URLs for songs. These URLs are parsed, and the links are stored in a DuckDB database. The `SitemapProcessor` class in `utils.py` is responsible for fetching and processing these sitemaps and retrieving song data. 
 
-Note for Recruiter: In this part, @dlt.resource is used to insert data into the database in an orderly fashion. I couldn't find a way to directly query DuckDB in dlt, so I used a separate function to fetch information from the database. Additionally, this part uses dlt solely to push data into the database.This part includes two separate steps to actually analyze sitemaps and get song ids. 
+***Note for Recruiter: In this part, @dlt.resource is used to insert data into the database in an orderly fashion. I couldn't find a way to directly query DuckDB in dlt, so I used a separate function to fetch information from the database. Additionally, this part uses dlt solely to push data into the database.This part includes two separate steps to actually analyze sitemaps and get song ids. 
 
 ### 2. **Song Metadata Fetching**
 Song metadata is fetched from the Apple iTunes API. The `fetch_song_info.py` file provides functions for making requests to the iTunes Lookup API to fetch song metadata for a list of song IDs. The results are then stored in the DuckDB database.
 
-Note for Recruiter: In this section, I utilized dlt's Rest_API_Client to fetch data, format it, and then push it to the database with @dlt.source. This approach was much more straightforward because the metadata contained many columns, making it easier to work with.
+***Note for Recruiter: In this section, I utilized dlt's Rest_API_Client to fetch data, format it, and then push it to the database with @dlt.source. This approach was much more straightforward because the metadata contained many columns, making it easier to work with.
 
 ### 3. **Lyrics Fetching**
 The `fetch_lyrics.py` file fetches lyrics for songs using a public API (Lyrics.ovh) and stores them in the database. The process is part of the pipeline but can be optionally skipped or retried in case of errors.
 
-Note for Recruiter: I manually send requests for lyrics in this section. The code does not expose this part because it sends requests for each song to fetch lyrics. There's no clear documentation available for this API, but I used it as a free resource for fetching lyrics. It takes long time, you can try it if you want, but I don't want you to wait for 10 minutes. 
+***Note for Recruiter: I manually send requests for lyrics in this section. The code does not expose this part because it sends requests for each song to fetch lyrics. There's no clear documentation available for this API, but I used it as a free resource for fetching lyrics. It takes long time, you can try it if you want, but I don't want you to wait for 10 minutes. 
 
 ### 4. **Main Script**
 The `main.py` file orchestrates the entire process by:
@@ -71,7 +71,7 @@ The `pipeline_itunes_songs.py` file defines the DLT pipeline that runs all tasks
 ### 6. **Utility Functions**
 The `utility_functions/utils.py` file contains helper functions like `SitemapProcessor`, which abstracts the logic for fetching, processing, and storing sitemaps and song data in batches.
 
-General Note to Recruiter: I only used "write_disposition="merge" since there is no need for duplication of data, I want to keep a general database for songs in apple music for further analysis, and I can use this information to create analysis on behavior of musicians, album names and all other stuff. 
+***General Note to Recruiter: I only used "write_disposition="merge" since there is no need for duplication of data, I want to keep a general database for songs in apple music for further analysis, and I can use this information to create analysis on behavior of musicians, album names and all other stuff. 
 In addition, with incremental updates, we can keep this database updated for music information, but I would definitely need a server for that, and also incremental loading in dlt to keep sitemaps and song info up to date if any changes happen on them. Also, I could not find anything to parse sitemaps from webscraping, and maybe, it might be useful for dlt since Apple also uses it for it's AppStore to list apps inside it. 
 
 ## How to Run
