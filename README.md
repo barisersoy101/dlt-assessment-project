@@ -71,7 +71,7 @@ The `pipeline_itunes_songs.py` file defines the DLT pipeline that runs all tasks
 ### 6. **Utility Functions**
 The `utility_functions/utils.py` file contains helper functions like `SitemapProcessor`, which abstracts the logic for fetching, processing, and storing sitemaps and song data in batches.
 
-***General Note to Recruiter: I only used "write_disposition="merge" since there is no need for duplication of data, I want to keep a general database for songs in apple music for further analysis, and I can use this information to create analysis on behavior of musicians, album names and all other stuff. 
+***General Note to Recruiter: I only used "write_disposition="merge" since there is no need for duplication of data. I want to keep a general database for songs in apple music for further analysis, and I can use this information to create analysis on behavior of musicians, album names and all other stuff. 
 In addition, with incremental updates, we can keep this database updated for music information, but I would definitely need a server for that, and also incremental loading in dlt to keep sitemaps and song info up to date if any changes happen on them. Also, I could not find anything to parse sitemaps from webscraping, and maybe, it might be useful for dlt since Apple also uses it for it's AppStore to list apps inside it. 
 
 ## How to Run
