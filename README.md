@@ -92,7 +92,7 @@ In addition, with incremental updates, we can keep this database updated for mus
    - `--max_songs`: Maximum number of songs to process (default: 1000).
    - `--sitemap_limit`: Limit the number of sitemaps to process (default: 5).
 
-3. **Optional**: You can manually fetch and store lyrics using the `fetch_and_store_lyrics()` function from `fetch_lyrics.py`.
+3. **Optional**: You can manually fetch and store lyrics using the `fetch_and_store_lyrics()` function from `fetch_lyrics.py` but you need to activate relevant functions for that. 
 
 ## Dependencies
 
